@@ -1,0 +1,71 @@
+<template>
+  <page title="首页">
+      <view class="uni-list">
+        <view
+          class="uni-list-cell"
+          c-for="{{listData}}"
+          c-for-index="index"
+          c-key ="{{index}}"
+        >
+        <view style="flex:1;">
+          <card item="{{item}}"></card>
+        </view>
+        </view>
+      </view>
+  </page>
+</template>
+
+<script>
+import cml from 'chameleon-api'
+import  Api from '../../utils/api'
+class Index  {
+  data = {
+    listData:[]
+  }
+  created(){
+    this.$perf && this.$perf.mark('setData')
+    this.listData = Api.getNews()
+  
+  }
+  onPullDownRefresh() {
+    this.listData = Api.getNews();
+    setTimeout(() => {
+      wx.stopPullDownRefresh();
+    }, 1000);
+  }
+  onReachBottom() {
+    this.$perf && this.$perf.mark('setData')
+    this.listData.push(...Api.getNews().sort(function() {
+        return .5 - Math.random();
+    }));
+  }
+}
+
+export default new Index();
+</script>
+<style>
+
+/* 列表 */
+.uni-list {
+  background-color: #eee;
+  position: relative;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "card": "/components/card/card"
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "首页",
+    "enablePullDownRefresh": true,
+		"backgroundTextStyle":"dark"
+  }
+}
+</script>

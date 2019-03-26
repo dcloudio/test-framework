@@ -1,0 +1,200 @@
+<template>
+  <view class="uni-media-list">
+    <view class="uni-media_header-box">
+      <view class="uni-media_header">
+        <image
+          class="uni-media_image"
+          src="{{item.cover}}"
+          mode="aspectFill"
+        />
+      </view>
+      <view class="uni-media_header-info">
+        <view class="uni-media_info-name"><text>{{item.author_name}}</text></view>
+        <view class="uni-media_info-from"><text class="from-text">{{item.published_at}}</text> <text class="from-text">{{item.form}}</text></view>
+      </view>
+      <view class="uni-media_header-right">
+        <!-- 这里是关闭之类的操作 -->
+      </view>
+    </view>
+    <view class="uni-media_content-box">
+      <view class="uni-media_content-text"><text>{{item.content}}</text></view>
+      <view class="uni-media_content-iamges">
+        <view
+          class="uni-media_content-img {{item.imgs.length === 1?'img_1':''}}"
+          c-for="{{item.imgs}}"
+          c-for-item="imgs"
+          c-for-index="index"
+          c-key="index"
+        >
+          <view class="uni-media_content-img-item">
+            <image
+            class="uni-media_content-img-item-img"
+              src="{{imgs}}"
+              mode="aspectFill"
+            />
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <view class="uni-media_groups">
+      <view class="uni-media_groups-item"><text class="uni-media_groups-item-iconfont iconfont icon-fenxiang-copy">\ue603</text><text class="from-text">{{item.share}}</text><text class="from-text">万</text></view>
+      <view class="uni-media_groups-item"><text class="uni-media_groups-item-iconfont iconfont icon-pinglun">\ue61b</text><text class="from-text">{{item.comment}}</text><text class="from-text">万</text></view>
+      <view class="uni-media_groups-item"  c-bind:tap="trigger"><text class="uni-media_groups-item-iconfont iconfont icon-dianzan1 {{isActive?'uni-media_groups-item-active':''}}" >\ue600</text><text class="from-text">{{item.thumbs}}</text><text class="from-text">万</text></view>
+    </view>
+  </view>
+ 
+</template>
+
+<script>
+
+class Card {
+  props = {
+    item: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    }
+  };
+  data = {
+    isActive: false
+  };
+  methods = {
+    trigger(e) {
+      this.$perf && this.$perf.mark('setData')
+      this.isActive = !this.isActive;
+    }
+  };
+}
+export default new Card();
+</script>
+
+<style>
+.uni-media-list {
+    background: #fff;
+    margin-bottom: 20cpx;
+}
+
+.uni-media_header-box {
+  flex-direction: row;
+  padding: 15cpx 20cpx;
+}
+
+.uni-media_header {
+    width: 90cpx;
+    height: 90cpx;
+    border-radius: 200cpx;
+    border: 1px #f5f5f5 solid;
+    overflow: hidden;
+}
+
+.uni-media_image  {
+    width: 90cpx;
+    height: 90cpx;
+}
+
+.uni-media_header-info {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4cpx 0;
+    padding-left: 20cpx;
+    font-size: 26cpx;
+    color: #999;
+}
+
+.uni-media_info-name {
+    font-size: 36cpx;
+    color: #ff5a5f;
+}
+.uni-media_info-from {
+    flex-direction: row;
+}
+.from-text{
+    font-size: 26cpx;
+}
+.uni-media_content-box {
+    /* padding: 20cpx 0; */
+}
+
+.uni-media_content-text {
+    font-size: 28cpx;
+    color: #333;
+    padding: 0 20cpx;
+}
+
+.uni-media_content-iamges {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10cpx;
+}
+
+.uni-media_content-img {
+    position: relative;
+    width: 240cpx;
+    height: 0;
+    padding-top: 240cpx;
+    box-sizing: border-box;
+}
+
+.uni-media_content-img-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 230cpx;
+    height: 230cpx;
+    padding: 10cpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.uni-media_content-img-item-img {
+  width: 230cpx;
+  height: 230cpx;
+}
+
+.uni-media_groups {
+    flex-direction: row;
+    height: 80cpx;
+    border-top: 1px#f5f5f5 solid;
+    margin: 0 20cpx;
+}
+
+.uni-media_groups-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 24cpx;
+    color: #666;
+    flex: 1;
+}
+
+.uni-media_groups-item-iconfont {
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 28cpx;
+    margin-right: 10cpx;
+}
+
+.uni-media_groups-item-active {
+    color: #ff5a5f;
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARUAAsAAAAACMQAAAQIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqEfIQXATYCJAMQCwoABCAFhG0HTBuNB8gekkSZgALKAQBgAVjy+X/Pug+ZSV+atmemGImrLzsLKF1A+oKQo21iEtrShTKNpJkl7cjx2O4RTxsPvbd/272JZRbxXhAEeIDpTCNLkv7nmOkqRPKvbU6VVGlRiQMctw4sonRvIHFgdyB4w9jlRV4GAhCCJCB7lftLMHD6LAIgZ0fmCkZCh1ekEzLCo2BjgtyQyG08vQRgqvf35EdayAAldehX1ZyHQFh/eO7PdOOHpl2HPpwFANsGMEACgAM5Cm2tyUEgASPkWEUWQDYsFIbqY8/9DQNLt6KWsR2gnf95ZEBXmyE2I8jgOSw+UHjOxEUafyi9ADV3NsgAFXANwGe6NsDLknB887XAn+VHvIhqDlAH23YdCuT64UwFPuWYrSizXQ2sE48SacmRLNJs9qaIW/Xrv8SKCVl7trikOVuz736ot3uxva5lwip9tWKduNa9RpD6CarDOnftQnJds06dW/zMweLhHfupZfZbt+x08W1FXXvXdfeufckZOyFdxKp5aLRWu5S1C51swZ70UwdPnA3osybMcZK5czvMWjXH7Wo/d+1s3d6Q6rOEZcIcIrnnKioxTziEGcdGWtce9WcsHyGE7DFl4uz8cF1r+VK1sA4l//kmywDC5WPjDp1E5DQet7cpEyaL1njaiR4ltzB/3vwe6dd4Hs2g5rSBJAvuYMRvuu9FjEV1qBYnJtEMUlH+WPO1qGMBPNCC7UYbR/R7Z0egCuS8n//nSz31+3SlSRm7atuOnxllQT5Dd4fXksrfBuz1LhqeCqzEvFoLSPAf137bqFA3Mfz9QwHkPF9ND5UDpsf2g+KAOHghakDKI7t27GX71LfuMJpZRRxSXolLoq/FvjJpZZAW1HfptVfXNLVKM/uh6YbpofOicI5DDwKM/8YuDlaAsZtdZ4O80Fe2kn77H27D3My9N1pYC77JCgcA3DvsPxhWdZO8VEljydtX5qAEkCsyXcdT0hv/PUnzInAtqXBLKyAIgAFdXp4MoXXIqQAhc0RAeQoERhaB5NgEkCgywIOsGIR4VbcrvPUiI2kCEGc0AMJmK1AWR4GxuYzk2McgcXoHHmzBQKgf3gcqoqKjKO+Fbo0BtB4IHdtwCk1jbfnpD2RN5pZxmUf5YFnFbkhNSkmHT0hYDrGkdz+26tMnBK0X/0IVcB1mGYcevXiCfj3r0KfOneRkrehFszbdv4KlXAm5aigAWhuAjnwcCZ3mNSvz+w+IaWRcZUVdWfADlSrx4CBVkpQGyJOaGtVdyvDeWsxKH7UQT9OUuC9QBVpQZgQ40KN4XAL5ajMdOvhyjmTUSGuqnk2v/d7hFgBBP5gHJYxwIsHz6kgsa8ho29Gl0YxZqlo76qM8Nm3TPR8EAQ==') format('woff2');
+}
+
+.iconfont {
+    font-family: "iconfont";
+    font-size: 32cpx;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+</style>
+<script cml-type="json">
+{} 
+</script>
