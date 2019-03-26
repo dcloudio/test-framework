@@ -1,0 +1,79 @@
+<style>
+/* 列表 */
+.uni-list {
+  background-color: #eee;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>
+<template>
+  <view>
+    <view class="uni-list">
+      <repeat
+        for="{{listData}}"
+        index="key"
+        key="key"
+        item="list"
+      >
+        <view
+          class="uni-list-cell"
+          hover-class="uni-list-cell-hover"
+        >
+          <card
+            :item.sync="list"
+            :key.sync="key"
+            @trigger.user="trigger"
+          ></card>
+        </view>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import card from '@/components/card';
+import Api from '@/utils/api.js';
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: 'wepy',
+    enablePullDownRefresh: true,
+    backgroundTextStyle: 'dark',
+    usingComponents: {}
+  };
+  components = {
+    card
+  };
+  data = {
+    listData: []
+  };
+  onLoad() {
+    this.$wxpage.$perf && this.$wxpage.$perf.mark('setData')
+    this.listData = Api.getNews();
+  }
+  methods = {
+    trigger(key) {
+      this.$wxpage.$perf && this.$wxpage.$perf.mark('setData',this,[key]);
+      this.listData[key].active = !this.listData[key].active;
+      this.$apply()
+    }
+  };
+  onPullDownRefresh() {
+    this.listData = Api.getNews();
+    setTimeout(() => {
+      wx.stopPullDownRefresh();
+    }, 1000);
+  }
+  onReachBottom() {
+    this.$wxpage.$perf && this.$wxpage.$perf.mark('setData')
+    this.listData.push(
+      ...Api.getNews().sort(function() {
+        return 0.5 - Math.random();
+      })
+    );
+  }
+}
+</script>
