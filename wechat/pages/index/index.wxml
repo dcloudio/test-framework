@@ -1,0 +1,9 @@
+<view>
+    <view class="uni-list">
+        <view class="uni-list-cell"  wx:for="{{listData}}" wx:for-index="key" wx:key="key">
+        <view style='flex:1'>
+            <card item="{{item}}"></card>
+        </view>
+        </view>
+    </view>
+</view>

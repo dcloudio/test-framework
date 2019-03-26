@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "wxchat",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "card": "../../components/card/card"
+    }
+}
