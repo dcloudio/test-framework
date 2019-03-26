@@ -7,7 +7,7 @@ import './index.scss'
 
 export default class Index extends Component {
   config: Config = {
-    navigationBarTitleText: '首页',
+    navigationBarTitleText: '仿微博 - taro版',
     enablePullDownRefresh: true,
     backgroundTextStyle: 'dark'
   }
@@ -35,9 +35,7 @@ export default class Index extends Component {
   onReachBottom() {
     this.$scope.$perf && this.$scope.$perf.mark('setData')
     const listData = this.state.listData
-    listData.push(...Api.getNews().sort(function() {
-      return .5 - Math.random();
-    }))
+    listData.push(...Api.getNews())
     this.setState({
       listData
     })

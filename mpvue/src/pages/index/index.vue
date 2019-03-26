@@ -42,11 +42,7 @@
         },
         onReachBottom() {
             this.$mp.page.$perf && this.$mp.page.$perf.mark('setData')
-            this.listData.push(
-                ...Api.getNews().sort(function() {
-                    return 0.5 - Math.random()
-                })
-            )
+            this.listData.push(...Api.getNews())
         }
     }
 </script>

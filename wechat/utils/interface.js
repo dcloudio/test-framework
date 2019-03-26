@@ -2,7 +2,7 @@
  * 是否开始测算页面性能
  */
 export function shouldMeasurePage(data) {
-    return data.listData
+    return true
 }
 /**
  * 是否开始测试组件性能

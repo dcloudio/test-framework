@@ -39,7 +39,7 @@ import Api from '@/utils/api.js';
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: 'wepy',
+    navigationBarTitleText: '仿微博 - wepy版',
     enablePullDownRefresh: true,
     backgroundTextStyle: 'dark',
     usingComponents: {}
@@ -69,11 +69,7 @@ export default class Index extends wepy.page {
   }
   onReachBottom() {
     this.$wxpage.$perf && this.$wxpage.$perf.mark('setData')
-    this.listData.push(
-      ...Api.getNews().sort(function() {
-        return 0.5 - Math.random();
-      })
-    );
+    this.listData.push(...Api.getNews());
   }
 }
 </script>

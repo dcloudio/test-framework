@@ -28,7 +28,7 @@ export default new App();
     "window": {
       "backgroundTextStyle": "dark",
       "navigationBarBackgroundColor": "#343434",
-      "navigationBarTitleText": "CNODE",
+      "navigationBarTitleText": "仿微博 - chameleon版",
       "navigationBarTextStyle": "white"
     }
   }

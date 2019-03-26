@@ -5,7 +5,7 @@
     {
       "url": "/cml/h5/index",
       "path": "/pages/index/index",
-      "name": "首页",
+      "name": "仿微博 - chameleon版",
       "mock": "index.php"
     }
   ]
