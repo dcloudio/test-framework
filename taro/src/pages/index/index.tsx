@@ -14,10 +14,19 @@ export default class Index extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    if(process.env.TARO_ENV === 'h5'){
+      this.state = {
+        listData: Api.getNews()
+      }
+    }else {
+      this.state = {}
+    }
   }
   componentDidMount() {
-    this.$scope.$perf && this.$scope.$perf.mark('setData')
+    if(process.env.TARO_ENV === 'weapp'){
+      this.$scope.$perf && this.$scope.$perf.mark('setData')
+    }
+    // console.log(Api.getNews())
     this.setState({
       listData: Api.getNews()
     })
@@ -33,7 +42,9 @@ export default class Index extends Component {
   }
   
   onReachBottom() {
-    this.$scope.$perf && this.$scope.$perf.mark('setData')
+    if(process.env.TARO_ENV === 'weapp'){
+      this.$scope.$perf && this.$scope.$perf.mark('setData')
+    }
     const listData = this.state.listData
     listData.push(...Api.getNews())
     this.setState({

@@ -13,7 +13,9 @@ export default class Card extends Component {
   }
 
   trigger() {
-    this.$scope.$perf && this.$scope.$perf.mark('setData')
+    if(process.env.TARO_ENV === 'weapp'){
+      this.$scope.$perf && this.$scope.$perf.mark('setData')
+    }
     this.setState({
       isActive:!this.state.isActive
     })
@@ -21,52 +23,49 @@ export default class Card extends Component {
  
   render() {
     let { item } = this.props
+    let isActive = this.state.isActive
     let imgs = item.imgs.map((img,index)=>{
         return (
             <View
-              className="uni-media_content-img {item.imgs.length === 1?'active':''}"
-              key={index}
+            className="uni-media_content-img"
+            key={index}
             >
               <View className="uni-media_content-img-item">
-                <Image
+                <Image  className="uni-media_content-img-item-img"
                   src={img}
                   mode="aspectFill"
                 />
               </View>
-
             </View>
         )
     })
 
     return (
 
-      <View>
-         <View className="uni-media-list">
-          <View className="uni-media_header-box">
-            <View className="uni-media_header">
-              <Image
-                src={item.cover}
-                mode="aspectFill"
-              />
-            </View>
-            <View className="uni-media_header-info">
-              <View className="uni-media_info-name">{item.author_name}</View>
-              <View>{item.published_at} {item.form}</View>
-            </View>
-            <View className="uni-media_header-right">
-            </View>
+      <View className="uni-media-list">
+        <View className="uni-media_header-box">
+          <View className="uni-media_header">
+            <Image
+              className="uni-media_image"
+              src={item.cover}
+              mode="aspectFill"
+            />
           </View>
-          <View className="uni-media_content-box">
-            <View className="uni-media_content-text">{item.content}</View>
-            <View className="uni-media_content-iamges">
-              {imgs}
-            </View>
+          <View className="uni-media_header-info">
+            <View className="uni-media_info-name"><Text>{item.author_name}</Text></View>
+            <View className="uni-media_info-from"><Text className="from-text">{item.published_at}</Text> <Text className="from-text">{item.form}</Text></View>
           </View>
-          <View className="uni-media_groups">
-            <View className="uni-media_groups-item"><Text className="iconfont icon-fenxiang-copy"></Text><Text>{item.share}万</Text></View>
-            <View className="uni-media_groups-item"><Text className="iconfont icon-pinglun"></Text><Text>{item.comment}万</Text></View>
-            <View className="uni-media_groups-item" onClick={this.trigger}><Text className="iconfont icon-dianzan1 {{isActive?'active':''}}" ></Text><Text>{item.thumbs}万</Text></View>
+        </View>
+        <View className="uni-media_content-box">
+          <View className="uni-media_content-text"><Text>{item.content}</Text></View>
+          <View className="uni-media_content-iamges">
+            {imgs}
           </View>
+        </View>
+        <View className="uni-media_groups">
+          <View className="uni-media_groups-item"><Text className="uni-media_groups-item-iconfont iconfont icon-fenxiang-copy"></Text><Text className="from-text">{item.share}</Text><Text className="from-text">万</Text></View>
+          <View className="uni-media_groups-item"><Text className="uni-media_groups-item-iconfont iconfont icon-pinglun"></Text><Text className="from-text">{item.comment}</Text><Text className="from-text">万</Text></View>
+          <View className="uni-media_groups-item"  onClick={this.trigger}><Text className={["uni-media_groups-item-iconfont iconfont icon-dianzan1",isActive?'uni-media_groups-item-active':'']} ></Text><Text className="from-text">{item.thumbs}</Text><Text className="from-text">万</Text></View>
         </View>
       </View>
     )
