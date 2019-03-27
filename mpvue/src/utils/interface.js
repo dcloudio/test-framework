@@ -22,17 +22,17 @@ export function getComponentTriggerFn () {
  * 显示 toast
  */
 export function showToast (args) {
-  return wx.showToast(args)
+  return mpvue.showToast(args)
 }
 /**
  * 隐藏 toast
  */
 export function hideToast () {
-  return wx.hideToast()
+  return mpvue.hideToast()
 }
 /**
  * 显示 modal
  */
 export function showModal (args) {
-  return wx.showModal(args)
+  return mpvue.showModal(args)
 }
