@@ -1,7 +1,9 @@
-import './utils/perf'
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
 import './app.scss'
+if(process.env.TARO_ENV === 'weapp'){
+  require('./utils/perf') 
+}
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：

@@ -1,20 +1,33 @@
-import performance from './performance.polyfill.js'
-
-import {
+// import performance from './performance.polyfill.js'
+const performance = require('./performance.polyfill.js')
+const {
     PERF_MAX,
     PERF_LIKE_MAX,
     PERF_AUTO,
     PERF_USING_COMPONENTS
-} from './config'
-
-import {
+} = require('./config')
+// import {
+//     PERF_MAX,
+//     PERF_LIKE_MAX,
+//     PERF_AUTO,
+//     PERF_USING_COMPONENTS
+// } from './config'
+const {
     shouldMeasurePage,
     shouldMeasureComponent,
     getComponentTriggerFn,
     showToast,
     hideToast,
     showModal
-} from './interface'
+} = require('./interface')
+// import {
+//     shouldMeasurePage,
+//     shouldMeasureComponent,
+//     getComponentTriggerFn,
+//     showToast,
+//     hideToast,
+//     showModal
+// } from './interface'
 
 function isFn(fn) {
     return typeof fn === 'function'
@@ -112,7 +125,7 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
         }
         // console.log('....after', data)
         this.$perf.measure('setData.before')
-        oldSetData.call(this, data, function() {
+        oldSetData.call(this, data, function () {
             this.$perf.measure('setData.end')
             if (this.$perf.isEnd()) {
                 this.$perf.ended = true
@@ -145,13 +158,13 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
 
 function initPagePerf() {
     const $perf = this.$perf = new Perf('page', PERF_MAX, PERF_AUTO)
-    wrapperSetData.call(this, 'page', shouldMeasurePage, function(stat) {
+    wrapperSetData.call(this, 'page', shouldMeasurePage, function (stat) {
         if ($perf.autoArgs) {
             return `共点击${PERF_LIKE_MAX}次,赋值平均耗时:${stat.before},渲染平均耗时:${stat.end}`
         }
         return `共${PERF_MAX}页,${20 * PERF_MAX}条数据,赋值平均耗时:${stat.before},渲染平均耗时:${stat.end},点击任意点赞按钮,开始按钮点击测试!`
-    }, function() {
-        return function(args) {
+    }, function () {
+        return function (args) {
             console.log('当前第' + (this.$perf.count + 1) + '页,共' + this.$perf.max + '页')
             return this.onReachBottom()
         }
@@ -160,24 +173,16 @@ function initPagePerf() {
 
 function initComponentPerf(oldSetData) {
     this.$perf = new Perf('component', PERF_LIKE_MAX, PERF_AUTO)
-    wrapperSetData.call(this, 'component', shouldMeasureComponent, function(stat) {
+    wrapperSetData.call(this, 'component', shouldMeasureComponent, function (stat) {
         return `共点击${PERF_LIKE_MAX}次,赋值平均耗时:${stat.before},渲染平均耗时:${stat.end}`
     }, getComponentTriggerFn, oldSetData)
 }
 
-if (typeof Page === 'undefined') {
-    Page = function() {
-
-    }
-    Component = function() {
-
-    }
-}
 
 const oldPage = Page
-Page = function(options) {
+Page = function (options) {
     const oldOnLoad = options.onLoad
-    options.onLoad = function(args) {
+    options.onLoad = function (args) {
         initPagePerf.call(this)
         isFn(oldOnLoad) && oldOnLoad.call(this, args)
     }
@@ -185,9 +190,9 @@ Page = function(options) {
 }
 
 const oldComponent = Component
-Component = function(options) {
+Component = function (options) {
     const oldCreated = options.created
-    options.created = function(args) {
+    options.created = function (args) {
         if (this.is === 'pages/index/index') {
             initPagePerf.call(this)
         } else {

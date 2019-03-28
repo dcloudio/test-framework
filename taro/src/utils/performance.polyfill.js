@@ -101,4 +101,5 @@ performance.clearMeasures = function (name) {
   _clearEntries('measure', name)
 }
 
-export default performance
+// export default performance
+module.exports = performance

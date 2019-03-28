@@ -47,7 +47,7 @@
         },
         methods: {
             trigger() {
-                this.$mp.component.$perf && this.$mp.component.$perf.mark('setData')
+                this.$mp &&  this.$mp.component && this.$mp.component.$perf && this.$mp.component.$perf.mark('setData')
                 this.isActive = !this.isActive
             }
         }

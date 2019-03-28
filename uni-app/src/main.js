@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App'
-import 'utils/perf.js'
+
+//#ifdef MP-WEIXIN
+    require('utils/perf.js')
+//#endif
 
 Vue.config.productionTip = false
 
