@@ -51,6 +51,7 @@
         "appid": "",
         "setting" : {
         	"urlCheck" : true
-        }
+        },
+        "usingComponents": true
     }
 }
