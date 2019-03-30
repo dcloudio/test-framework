@@ -20,7 +20,10 @@ export default class Index extends Component {
     
   }
   componentWillMount() {
-    this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
+    if (process.env.TARO_ENV === 'weapp') {
+      this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
+    }
+    
     this.setState({
       listData: Api.getNews()
     })
