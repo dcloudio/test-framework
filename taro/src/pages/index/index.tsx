@@ -35,12 +35,16 @@ export default class Index extends Component {
     })
     setTimeout(() => {
       Taro.stopPullDownRefresh()
+      Taro.showToast({
+        title: '刷新成功',
+        duration: 1000
+      })
     }, 1000)
   }
   
   onReachBottom() {
     this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
-    const listData = this.state.listData
+    let listData = this.state.listData
     listData.push(...Api.getNews())
     this.setState({
       listData

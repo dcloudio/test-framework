@@ -63,9 +63,21 @@ export default class Card extends Component {
           </View>
         </View>
         <View className="uni-media_groups">
-          <View className="uni-media_groups-item"><Text className="uni-media_groups-item-iconfont iconfont icon-fenxiang-copy"></Text><Text className="from-text">{item.share}</Text><Text className="from-text">万</Text></View>
-          <View className="uni-media_groups-item"><Text className="uni-media_groups-item-iconfont iconfont icon-pinglun"></Text><Text className="from-text">{item.comment}</Text><Text className="from-text">万</Text></View>
-          <View className="uni-media_groups-item"  onClick={this.trigger}><Text className={["uni-media_groups-item-iconfont iconfont icon-dianzan1",isActive?'uni-media_groups-item-active':'']} ></Text><Text className="from-text">{item.thumbs}</Text><Text className="from-text">万</Text></View>
+          <View className="uni-media_groups-item">
+            <Text className="uni-media_groups-item-iconfont iconfont icon-fenxiang-copy"></Text>
+            <Text className="from-text">{item.share}</Text>
+            <Text className="from-text">万</Text>
+          </View>
+          <View className="uni-media_groups-item">
+            <Text className="uni-media_groups-item-iconfont iconfont icon-pinglun"></Text>
+            <Text className="from-text">{item.comment}</Text>
+            <Text className="from-text">万</Text>
+          </View>
+          <View className="uni-media_groups-item"  onClick={this.trigger}>
+          <Text className={["uni-media_groups-item-iconfont iconfont icon-dianzan1",isActive?'uni-media_groups-item-active':'']} ></Text>
+          <Text className="from-text">{item.thumbs}</Text>
+          <Text className="from-text">万</Text>
+          </View>
         </View>
       </View>
     )
