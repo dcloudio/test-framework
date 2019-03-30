@@ -6,12 +6,7 @@ const {
     PERF_AUTO,
     PERF_USING_COMPONENTS
 } = require('./config')
-// import {
-//     PERF_MAX,
-//     PERF_LIKE_MAX,
-//     PERF_AUTO,
-//     PERF_USING_COMPONENTS
-// } from './config'
+
 const {
     shouldMeasurePage,
     shouldMeasureComponent,
@@ -20,14 +15,6 @@ const {
     hideToast,
     showModal
 } = require('./interface')
-// import {
-//     shouldMeasurePage,
-//     shouldMeasureComponent,
-//     getComponentTriggerFn,
-//     showToast,
-//     hideToast,
-//     showModal
-// } from './interface'
 
 function isFn(fn) {
     return typeof fn === 'function'

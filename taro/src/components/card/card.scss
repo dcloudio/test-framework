@@ -67,7 +67,6 @@
   width: 240px;
   height: 0;
   padding-top: 240px;
-  box-sizing: border-box;
 }
 
 .uni-media_content-img-item {
@@ -77,7 +76,6 @@
   width: 230px;
   height: 230px;
   padding: 10px;
-  box-sizing: border-box;
   overflow: hidden;
 }
 
@@ -90,7 +88,8 @@
   display: flex;
   flex-direction: row;
   height: 80px;
-  border-top: 1px#f5f5f5 solid;
+  border-top-color: #f5f5f5;
+  border-top-width: 1px;
   margin: 0 20px;
 }
 
@@ -123,7 +122,7 @@
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
+  font-family: "iconfont";
   font-size: 32px;
   font-style: normal;
 }
