@@ -13,7 +13,9 @@ export default class Card extends Component {
   }
 
   trigger = () => {
-    this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
+    if (process.env.TARO_ENV === 'weapp') {
+      this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
+    }
     this.setState({
       isActive:!this.state.isActive
     })
