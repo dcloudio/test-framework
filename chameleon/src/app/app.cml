@@ -5,7 +5,11 @@
 <script>
 import store from '../store/index.js'
 import routerConfig from '../router.config.json';
-import '../utils/perf.js'
+
+if (process.env.platform === 'wx'){
+  require('../utils/perf.js')
+}
+
 class App {
   data = {
     store,

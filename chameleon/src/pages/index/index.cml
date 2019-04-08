@@ -29,8 +29,15 @@ class Index  {
   }
   onPullDownRefresh() {
     this.listData = Api.getNews();
+    //chameleon官网未搜到 stopPullDownRefresh 定义
+    //暂时先分平台编写
     setTimeout(() => {
-      wx.stopPullDownRefresh();
+      if(process.env.platform === 'wx'){
+        wx.stopPullDownRefresh();
+      }else if(process.env.platform === 'baidu'){
+        //TODO 
+      }
+      
     }, 1000);
   }
   onReachBottom() {
@@ -58,12 +65,13 @@ export default new Index();
   "base": {
     "usingComponents": {
       "card": "/components/card/card"
-    }
+    },
+    "enablePullDownRefresh": true
   },
   "wx": {
     "navigationBarTitleText": "仿微博 - chameleon版",
-    "enablePullDownRefresh": true,
 		"backgroundTextStyle":"dark"
-  }
+  },
+  "baidu":{}
 }
 </script>
