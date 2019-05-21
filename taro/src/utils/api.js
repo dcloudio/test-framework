@@ -1,18 +1,5 @@
-function getNews () {
+function getNews() {
   return JSON.parse(JSON.stringify([{
-    'id': 81052,
-    'post_id': '5173996',
-    'author_name': '小辫儿张云雷',
-    'cover': 'https://tvax4.sinaimg.cn/crop.0.0.1125.1125.180/806aed8dly8fwb9j9aji1j20v90v9aen.jpg',
-    'imgs': ['https://wx1.sinaimg.cn/orj360/806aed8dly1g1co1nrbgnj23h02bc7wq.jpg'],
-    'share': 16.3,
-    'comment': 50.3,
-    'thumbs': 120.9,
-    'published_at': '昨天 14:11:19',
-    'form': '来自 ipone客户端',
-    'content': '没有一点点防备也没有什么文案,我就这样出现',
-    'active': false
-  }, {
     'id': 81053,
     'post_id': '5173984',
     'author_name': '头条新闻',
@@ -26,7 +13,7 @@ function getNews () {
     'content': '#大城市女性买房猛增#【74.2％未受伴侣资助】随着单身女性成为新买家，中国房地产开发商正在改变策略，某售房平台对其平台上房产交易分析后发现，47.9%买家是女性，74.2%的女性买房时没有接受伴侣的资助，其中45.2%接受了父母资助，29%能完全凭一己之力买房。买房的单身女性表示能够感到更有安全感。 ',
     'active': false
   }, {
-    'id': 81049,
+    'id': 81052,
     'post_id': '5173990',
     'author_name': '赵品霖Pearain',
     'cover': 'https://tvax2.sinaimg.cn/crop.0.0.512.512.180/79671892ly8g1bs3ucet0j20e80e80te.jpg',
@@ -39,7 +26,7 @@ function getNews () {
     'content': '#遇见美好#',
     'active': false
   }, {
-    'id': 81050,
+    'id': 81051,
     'post_id': '5173993',
     'author_name': 'M鹿M',
     'cover': 'https://tvax3.sinaimg.cn/crop.13.0.614.614.180/5ba8d1cbly8fesjytq8a0j20hs0h2754.jpg',
@@ -52,7 +39,7 @@ function getNews () {
     'content': '试试新手机 yoyoyo',
     'active': false
   }, {
-    'id': 81051,
+    'id': 81050,
     'post_id': '5173989',
     'author_name': '旅游攻略君',
     'cover': 'https://tva4.sinaimg.cn/crop.0.0.1440.1440.180/b2b2dfe6jw8etfit6y75oj2140140gpu.jpg',
@@ -65,7 +52,7 @@ function getNews () {
     'content': '过.',
     'active': false
   }, {
-    'id': 81047,
+    'id': 81049,
     'post_id': '5173969',
     'author_name': '华晨宇yu',
     'cover': 'https://tva4.sinaimg.cn/crop.0.0.1080.1080.180/60da5d47jw8esd1q1zlzmj20u00u076v.jpg',
@@ -91,7 +78,7 @@ function getNews () {
     'content': '感觉焦俊艳真的活的好透彻啊，从小就看见了妈妈这辈子作为家庭妇女的生活是怎样的，所以“我的人生拿来试验一下怎么了”。这句真的酷！！好#羡慕焦俊艳家#的气氛，能大胆说心里话[ok]',
     'active': false
   }, {
-    'id': 81045,
+    'id': 81047,
     'post_id': '5173375',
     'author_name': '邓伦',
     'cover': 'https://tva4.sinaimg.cn/crop.0.0.630.630.180/6f3764f9jw8eeugeg0vdpj20hi0hidgu.jpg',
@@ -117,7 +104,7 @@ function getNews () {
     'content': '新的服裝、新的歌單、新的戶外場地，四萬人的聖所2.0杭州站，又開啟了我們一段難忘的旅程！',
     'active': false
   }, {
-    'id': 81044,
+    'id': 81045,
     'post_id': '5173962',
     'author_name': '江疏影',
     'cover': 'https://tvax4.sinaimg.cn/crop.0.0.1080.1080.180/5c596b7ely8fxwcinv80qj20u00u0wfx.jpg',
@@ -130,7 +117,7 @@ function getNews () {
     'content': '就是想发这组三亚泳装照，明早起床删',
     'active': false
   }, {
-    'id': 81039,
+    'id': 81044,
     'post_id': '5173974',
     'author_name': '姚晨',
     'cover': 'https://tva3.sinaimg.cn/crop.0.0.749.749.180/4b7a8989jw8f7bshuba3vj20ku0ktaaz.jpg',
@@ -143,7 +130,7 @@ function getNews () {
     'content': '全家最不给我面子的家伙。',
     'active': false
   }, {
-    'id': 81040,
+    'id': 81043,
     'post_id': '5173907',
     'author_name': '环球日报',
     'cover': 'https://tvax4.sinaimg.cn/crop.0.0.200.200.180/75b1a75fly1fmfz7qvv75j205k05kt8p.jpg',
@@ -156,7 +143,7 @@ function getNews () {
     'content': '-。-，嗯',
     'active': false
   }, {
-    'id': 81041,
+    'id': 81042,
     'post_id': '5173975',
     'author_name': '趴圈小猪二',
     'cover': 'https://tvax2.sinaimg.cn/crop.0.0.1242.1242.180/005Gyrr9ly8fggm1ramy2j30yi0yidhl.jpg',
@@ -169,7 +156,7 @@ function getNews () {
     'content': '#泫雅新妆容# 你们觉得她最适合那个妆容？',
     'active': false
   }, {
-    'id': 81042,
+    'id': 81041,
     'post_id': '5173938',
     'author_name': '东海信箱',
     'cover': 'https://tvax3.sinaimg.cn/crop.0.0.751.751.180/0077ZSQ3ly8fqijlwcnv9j30kv0kvaap.jpg',
@@ -182,7 +169,7 @@ function getNews () {
     'content': '',
     'active': false
   }, {
-    'id': 81043,
+    'id': 81040,
     'post_id': '5173972',
     'author_name': '一支上上签',
     'cover': 'https://tvax3.sinaimg.cn/crop.0.0.1002.1002.180/0064QOFcly8fh5drpiavxj30ru0ruwes.jpg',
@@ -195,7 +182,7 @@ function getNews () {
     'content': '上上签,一定灵',
     'active': false
   }, {
-    'id': 81038,
+    'id': 81039,
     'post_id': '5173873',
     'author_name': '潮女头',
     'cover': 'https://tvax3.sinaimg.cn/crop.0.0.960.960.180/e0e0b157ly8fjkjy8dc3rj20qo0qojsu.jpg',
@@ -208,7 +195,7 @@ function getNews () {
     'content': '美少女战士壁纸，只有美少女才能点赞哦！！！',
     'active': false
   }, {
-    'id': 81037,
+    'id': 81038,
     'post_id': '5173927',
     'author_name': '全沙雕',
     'cover': 'https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/006JLUOwly8g18428qnelj30u00u0jwh.jpg',
@@ -221,7 +208,7 @@ function getNews () {
     'content': '还是亲生的爸爸比较机智',
     'active': false
   }, {
-    'id': 81035,
+    'id': 81037,
     'post_id': '5173836',
     'author_name': '有默奇趣排行榜',
     'cover': 'https://tva3.sinaimg.cn/crop.0.0.700.700.180/005z044jjw8f2czv2k4fvj30jg0jgwga.jpg',
@@ -247,7 +234,7 @@ function getNews () {
     'content': 'He will be back',
     'active': false
   }, {
-    'id': 81033,
+    'id': 81035,
     'post_id': '5173649',
     'author_name': '朱德庸',
     'cover': 'https://tvax4.sinaimg.cn/crop.0.0.1080.1080.180/4d754b24ly8fzfsy4vqxmj20u00u0wfw.jpg',
@@ -258,6 +245,19 @@ function getNews () {
     'published_at': '昨天 11:46:24',
     'form': '来自 vivo nex',
     'content': '从前，生活要有心才能拥有，现在，生活要有钱才能拥有，这是我们最大的悲哀。 ',
+    'active': false
+  }, {
+    'id': 81034,
+    'post_id': '5173996',
+    'author_name': '小辫儿张云雷',
+    'cover': 'https://tvax4.sinaimg.cn/crop.0.0.1125.1125.180/806aed8dly8fwb9j9aji1j20v90v9aen.jpg',
+    'imgs': ['https://wx1.sinaimg.cn/orj360/806aed8dly1g1co1nrbgnj23h02bc7wq.jpg'],
+    'share': 16.3,
+    'comment': 50.3,
+    'thumbs': 120.9,
+    'published_at': '昨天 14:11:19',
+    'form': '来自 ipone客户端',
+    'content': '没有一点点防备也没有什么文案,我就这样出现',
     'active': false
   }]))
 }
