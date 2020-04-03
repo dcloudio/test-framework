@@ -1,0 +1,9 @@
+/* 列表 */
+.uni-list {
+    background-color: #eee;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  

@@ -1,8 +1,9 @@
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
-import './app.scss'
-if(process.env.TARO_ENV === 'weapp'){
-  require('./utils/perf') 
+import './app.css'
+
+if (process.env.TARO_ENV === 'weapp') {
+  require('./utils/perf')
 }
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -13,6 +14,14 @@ if(process.env.TARO_ENV === 'weapp'){
 
 class App extends Component {
 
+
+  componentDidMount() { }
+
+  componentDidShow() { }
+
+  componentDidHide() { }
+
+  componentDidCatchError() { }
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -20,7 +29,7 @@ class App extends Component {
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-  config: Config = {
+  config = {
     pages: [
       'pages/index/index'
     ],
@@ -32,17 +41,9 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
-
-  componentDidShow () {}
-
-  componentDidHide () {}
-
-  componentDidCatchError () {}
-
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Index />
     )

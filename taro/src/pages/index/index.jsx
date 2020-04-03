@@ -1,18 +1,12 @@
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import Card from '../../components/card/card'
 import Api from '../../utils/api'
 
-import './index.scss'
+import './index.css'
 
 export default class Index extends Component {
-  config: Config = {
-    navigationBarTitleText: '仿微博 - taro版',
-    // enablePullDownRefresh: false,
-    enablePullDownRefresh: true,
-    backgroundTextStyle: 'dark'
-  }
-
+ 
   constructor(props) {
     super(props)
     this.state = {
@@ -50,12 +44,18 @@ export default class Index extends Component {
       listData
     })
   }
+  config = {
+    navigationBarTitleText: '仿微博 - taro版',
+    enablePullDownRefresh: true,
+    backgroundTextStyle: 'dark'
+  }
+
 
   render() {
-    const list = this.state.listData.map((item, index) => {
+    const list = this.state.listData.map((item) => {
       return (
-        <View className="uni-list-cell" key={item.id}>
-          <View className="uni-list-cell-warp">
+        <View className='uni-list-cell' key={item.id}>
+          <View className='uni-list-cell-warp'>
             <Card item={item} />
           </View>
         </View>
@@ -63,8 +63,8 @@ export default class Index extends Component {
     })
 
     return (
-      <View className="index">
-        <View class="uni-list">{list}</View>
+      <View className='index'>
+        <View class='uni-list'>{list}</View>
       </View>
     )
   }
