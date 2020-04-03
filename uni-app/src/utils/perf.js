@@ -1,5 +1,4 @@
 const performance = require('./performance.polyfill.js')
-console.log(performance)
 const {
     PERF_MAX,
     PERF_LIKE_MAX,
@@ -19,8 +18,32 @@ function isFn(fn) {
     return typeof fn === 'function'
 }
 
+/**
+ * 数组求和
+ * @param {} arr 
+ */
 function avg(arr) {
-    return (arr.reduce((acc, val) => acc + val, 0) / arr.length).toFixed(2)
+    var newarr = spliceMaxMin(arr)
+    return (newarr.reduce((acc, val) => acc + val, 0) / newarr.length).toFixed(2)
+}
+
+/**
+ * 去掉数组中一个最大值和一个最小值
+ * @param {} arry 
+ */
+function spliceMaxMin (arry){
+    var result = arry.splice(0),
+        max = Math.max(...result),
+        min = Math.min(...result)
+    for(var i = 0; i < result.length;i++){
+        if(result[i] == max){
+            result.splice(i,1)
+        }
+        if(result[i] ==min){
+            result.splice(i,1)
+        }
+    }
+    return result
 }
 
 class Perf {
@@ -86,7 +109,6 @@ class Perf {
 function getStat(perf, type) {
     const before = perf.getEntriesByName(type + '.setData.before', 'measure').map(entry => entry.duration)
     const end = perf.getEntriesByName(type + '.setData.end', 'measure').map(entry => entry.duration)
-
     const len = before.length
     console.group('测试详情:')
     for (let i = 0; i < len; i++) {
@@ -104,7 +126,7 @@ function getStat(perf, type) {
 function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSetData) {
     oldSetData = oldSetData || this.setData
     this.setData = function setData(data, callback) {
-        // console.log('....before', data)
+        console.log('....before', data)
         if (Object.keys(data).length === 0) return // 忽略空数据
         if (!shouldMeasureFn.call(this, data, this.$perf.autoArgs) || this.$perf.ended) {
             return oldSetData.call(this, data, callback)
@@ -188,6 +210,6 @@ Component = function (options) {
     }
     return oldComponent(options)
 }
-
+console.log(345)
 export const PerfPage = Page
 export const PerfComponent = Component

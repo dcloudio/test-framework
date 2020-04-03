@@ -20,8 +20,32 @@ function isFn(fn) {
     return typeof fn === 'function'
 }
 
+/**
+ * 数组求和
+ * @param {} arr 
+ */
 function avg(arr) {
-    return (arr.reduce((acc, val) => acc + val, 0) / arr.length).toFixed(2)
+    var newarr = spliceMaxMin(arr)
+    return (newarr.reduce((acc, val) => acc + val, 0) / newarr.length).toFixed(2)
+}
+
+/**
+ * 去掉数组中一个最大值和一个最小值
+ * @param {} arry 
+ */
+function spliceMaxMin (arry){
+    var result = arry.splice(0),
+        max = Math.max(...result),
+        min = Math.min(...result)
+    for(var i = 0; i < result.length;i++){
+        if(result[i] == max){
+            result.splice(i,1)
+        }
+        if(result[i] ==min){
+            result.splice(i,1)
+        }
+    }
+    return result
 }
 
 class Perf {
@@ -123,7 +147,7 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
                     title: '提示',
                     content,
                     showCancel: false,
-                    success(res) {}
+                    success(res) { }
                 })
                 console.log(content)
                 if (PERF_USING_COMPONENTS === false && namespace === 'page') {
