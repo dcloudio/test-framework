@@ -126,7 +126,7 @@ function getStat(perf, type) {
 function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSetData) {
     oldSetData = oldSetData || this.setData
     this.setData = function setData(data, callback) {
-        console.log('....before', data)
+        // console.log('....before', data)
         if (Object.keys(data).length === 0) return // 忽略空数据
         if (!shouldMeasureFn.call(this, data, this.$perf.autoArgs) || this.$perf.ended) {
             return oldSetData.call(this, data, callback)
@@ -210,6 +210,5 @@ Component = function (options) {
     }
     return oldComponent(options)
 }
-console.log(345)
 export const PerfPage = Page
 export const PerfComponent = Component
