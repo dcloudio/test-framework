@@ -52,6 +52,6 @@ module.exports = {
     },
     projectConfig: {
         projectname: 'kbone-template-vue',
-        appid: 'wx9dcdaed5b2bc94ad',
+        appid: '',
     },
 }
