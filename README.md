@@ -12,6 +12,13 @@
 - `PERF_AUTO` 是否开启自动测试
 - `PERF_USING_COMPONENTS` 是否为原生组件，`mpvue`、`wepy` 为 `false`, 其他均为 `true`，请勿手动修改
 
+Tips:
+
+- `kone` 修改的配置跟其他平台有些区别，项目编译之后到微信开发者工具找到 `common --> utils --> perf.common.js` 文件，修改文件 `97行` 的  `PERF_MAX` 等变量，与上述描述一致，开始自动测试。
+
+- 因为 `kone` 翻页到 33 页会导致节点超出，脚本无法继续进行，为了方便查看日志，在 `common --> utils --> perf.common.js` 文件搜索 `showToast`， 大概 187 行，注释掉 `showToast` 弹窗提示的实现 ，并在手机端开启调试模式，查看报错日志。
+ 
+
 ## 测试结果@20190327
 
 ### 1. 跨端支持度如何
