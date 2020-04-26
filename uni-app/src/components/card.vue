@@ -45,9 +45,13 @@
                 isActive: this.item.active
             }
         },
+        created(){
+            // console.log('组件载入...')
+        },
         methods: {
             trigger() {
-                this.$mp &&  this.$mp.component && this.$mp.component.$perf && this.$mp.component.$perf.mark('setData')
+                this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
+                //  this.$vm &&this.$vm.$mp &&  this.$vm.$mp.component && this.$vm.$mp.component.$perf && this.$vm.$mp.component.$perf.mark('setData')
                 this.isActive = !this.isActive
             }
         }

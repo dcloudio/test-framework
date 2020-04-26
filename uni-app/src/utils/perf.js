@@ -63,10 +63,10 @@ class Perf {
         }
         if (this.auto) {
             showToast({
-                title: '自动测试中,请稍候...',
-                duration: 999999,
+                title: '自动测试中,请稍候... ',
+                // duration: 999999,
                 icon: 'none',
-                mask: true
+                // mask: true
             })
         }
         this.count++
@@ -128,12 +128,12 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
     this.setData = function setData(data, callback) {
         // console.log('....before', data)
         if (Object.keys(data).length === 0) return // 忽略空数据
-        if (!shouldMeasureFn.call(this, data, this.$perf.autoArgs) || this.$perf.ended) {
+        if (!shouldMeasureFn.call(this, data, this.$perf) || this.$perf.ended) {
             return oldSetData.call(this, data, callback)
         }
         // console.log('....after', data)
         this.$perf.measure('setData.before')
-        oldSetData.call(this, data, function () {
+        oldSetData.call(this, data,  ()=> {
             this.$perf.measure('setData.end')
             if (this.$perf.isEnd()) {
                 this.$perf.ended = true
@@ -200,7 +200,8 @@ Page = function (options) {
 const oldComponent = Component
 Component = function (options) {
     const oldCreated = options.created
-    options.created = function (args) {
+    // 兼容微信小程序和支付宝
+    options.created = options.onInit = function (args) {
         if (this.is === 'pages/index/index') {
             initPagePerf.call(this)
         } else {

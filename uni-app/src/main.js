@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 
-//#ifdef MP-WEIXIN
+//#ifdef MP-WEIXIN || MP-ALIPAY
 require('utils/perf.js')
 //#endif
 

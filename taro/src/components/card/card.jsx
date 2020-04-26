@@ -12,7 +12,7 @@ export default class Card extends Component {
   }
 
   trigger = () => {
-    if (process.env.TARO_ENV === 'weapp') {
+    if (process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'alipay') {
       this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
     }
     this.setState({
@@ -73,7 +73,7 @@ export default class Card extends Component {
             <Text className='from-text'>万</Text>
           </View>
           <View className='uni-media_groups-item'  onClick={this.trigger}>
-          <Text className={["uni-media_groups-item-iconfont iconfont icon-dianzan1",isActive?'uni-media_groups-item-active':'']} ></Text>
+          <Text className={`uni-media_groups-item-iconfont iconfont icon-dianzan1 ${isActive?'uni-media_groups-item-active':''}`} ></Text>
           <Text className='from-text'>{item.thumbs}</Text>
           <Text className='from-text'>万</Text>
           </View>

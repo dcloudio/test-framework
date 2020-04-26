@@ -14,7 +14,7 @@ export default class Index extends Component {
     }
   }
   componentWillMount() {
-    if (process.env.TARO_ENV === 'weapp') {
+    if (process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'alipay') {
       this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
     }
 

@@ -2,10 +2,9 @@ import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
 import './app.css'
 
-if (process.env.TARO_ENV === 'weapp') {
+if (process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'alipay') {
   require('./utils/perf')
 }
-
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {

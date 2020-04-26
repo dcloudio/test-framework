@@ -136,11 +136,12 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
         }
         // console.log('....after', data)
         this.$perf.measure('setData.before')
+        var _this = this
         oldSetData.call(this, data, function () {
-            this.$perf.measure('setData.end')
-            if (this.$perf.isEnd()) {
-                this.$perf.ended = true
-                const stat = getStat(this.$perf, namespace)
+            _this.$perf.measure('setData.end')
+            if (_this.$perf.isEnd()) {
+                _this.$perf.ended = true
+                const stat = getStat(_this.$perf, namespace)
                 const content = contentFn(stat)
                 hideToast()
                 showModal({
@@ -151,15 +152,15 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
                 })
                 console.log(content)
                 if (PERF_USING_COMPONENTS === false && namespace === 'page') {
-                    initComponentPerf.call(this, oldSetData)
+                    initComponentPerf.call(_this, oldSetData)
                 }
                 return
             }
-            if (this.$perf.auto) {
-                const autoFn = getAutoFn.call(this)
-                clearTimeout(this.$perf.timer)
-                this.$perf.timer = setTimeout(() => {
-                    autoFn.call(this, this.$perf.autoArgs)
+            if (_this.$perf.auto) {
+                const autoFn = getAutoFn.call(_this)
+                clearTimeout(_this.$perf.timer)
+                _this.$perf.timer = setTimeout(() => {
+                    autoFn.call(_this, _this.$perf.autoArgs)
                 }, 1000)
             }
             callback && callback()
@@ -203,7 +204,8 @@ Page = function (options) {
 const oldComponent = Component
 Component = function (options) {
     const oldCreated = options.created
-    options.created = function (args) {
+    // 兼容微信和支付宝
+    options.created = options.onInit = function (args) {
         if (this.is === 'pages/index/index') {
             initPagePerf.call(this)
         } else {
@@ -213,6 +215,5 @@ Component = function (options) {
     }
     return oldComponent(options)
 }
-
 export const PerfPage = Page
 export const PerfComponent = Component

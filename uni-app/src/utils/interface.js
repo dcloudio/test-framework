@@ -11,7 +11,7 @@ export function shouldMeasurePage (data) {
 /**
  * 是否开始测试组件性能
  */
-export function shouldMeasureComponent (data) {
+export function shouldMeasureComponent (data,perf) {
   return this.$perf.count > 0
 }
 export function getComponentTriggerFn () {
