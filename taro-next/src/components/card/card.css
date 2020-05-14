@@ -1,0 +1,140 @@
+.uni-media-list {
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+.uni-media_header-box {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 20px;
+}
+
+.uni-media_header {
+  width: 90px;
+  height: 90px;
+  border-radius: 200px;
+  border: 1px #f5f5f5 solid;
+  overflow: hidden;
+}
+
+.uni-media_image {
+  width: 90px;
+  height: 90px;
+}
+
+.uni-media_header-info {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0;
+  padding-left: 20px;
+  font-size: 26px;
+  color: #999;
+}
+
+.uni-media_info-name {
+  font-size: 36px;
+  color: #ff5a5f;
+}
+
+.uni-media_info-from {
+  display: flex;
+  flex-direction: row;
+}
+
+.from-text {
+  font-size: 26px;
+}
+
+.uni-media_content-box {
+  /* padding: 20px 0; */
+}
+
+.uni-media_content-text {
+  font-size: 28px;
+  color: #333;
+  padding: 0 20px;
+}
+
+.uni-media_content-iamges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.uni-media_content-img {
+  position: relative;
+  width: 240px;
+  height: 0;
+  padding-top: 240px;
+}
+
+.uni-media_content-img-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 230px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.uni-media_content-img-item-img {
+  width: 230px;
+  height: 230px;
+}
+
+.uni-media_groups {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  border-top-color: #f5f5f5;
+  border-top-width: 1px;
+  margin: 0 20px;
+}
+
+.uni-media_groups-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #666;
+  flex: 1;
+}
+
+.uni-media_groups-item-iconfont {
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.uni-media_groups-item-active {
+  color: #ff5a5f;
+}
+
+
+
+@font-face {font-family: "iconfont";
+  src: url('https://at.alicdn.com/t/font_1105050_zol10etauus.ttf?t=1553398395662') format('truetype'); /* IE9 */
+}
+
+.iconfont {
+  font-family: "iconfont";
+  font-size: 32px;
+  font-style: normal;
+}
+
+.icon-pinglun:before {
+  content: "\e61b";
+}
+
+.icon-dianzan1:before {
+  content: "\e600";
+}
+
+.icon-fenxiang-copy:before {
+  content: "\e603";
+}
