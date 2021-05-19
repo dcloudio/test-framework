@@ -53,12 +53,12 @@ performance.measure = function (name, startMark, endMark) {
   let endTime
 
   if (endMark !== undefined && _marksIndex[endMark] === undefined) {
-    throw new SyntaxError("Failed to execute 'measure' on 'Performance': The mark '" + endMark +
+    return console.log("Failed to execute 'measure' on 'Performance': The mark '" + endMark +
             "' does not exist.")
   }
 
   if (startMark !== undefined && _marksIndex[startMark] === undefined) {
-    throw new SyntaxError("Failed to execute 'measure' on 'Performance': The mark '" + startMark +
+    return console.log("Failed to execute 'measure' on 'Performance': The mark '" + startMark +
             "' does not exist.")
   }
 

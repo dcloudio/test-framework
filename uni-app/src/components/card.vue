@@ -42,7 +42,7 @@
         },
         data() {
             return {
-                isActive: this.item.active
+                isActive: false
             }
         },
         created(){

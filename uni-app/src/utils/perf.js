@@ -107,17 +107,19 @@ class Perf {
 }
 
 function getStat(perf, type) {
+    const diff = perf.getEntriesByName(type + '.setData.diff', 'measure').map(entry => entry.duration)
     const before = perf.getEntriesByName(type + '.setData.before', 'measure').map(entry => entry.duration)
     const end = perf.getEntriesByName(type + '.setData.end', 'measure').map(entry => entry.duration)
     const len = before.length
     console.group('测试详情:')
     for (let i = 0; i < len; i++) {
-        console.log(`第${i + 1}次,赋值耗时:${before[i]},渲染耗时:${end[i]}`)
+        console.log(`第${i + 1}次,diff耗时:${diff[i]},赋值耗时:${before[i]},渲染耗时:${end[i]}`)
     }
     console.groupEnd()
     perf.clearMarks()
     perf.clearMeasures()
     return {
+        diff:avg(diff),
         before: avg(before),
         end: avg(end)
     }
@@ -170,7 +172,7 @@ function initPagePerf() {
         if ($perf.autoArgs) {
             return `共点击${PERF_LIKE_MAX}次,赋值平均耗时:${stat.before},渲染平均耗时:${stat.end}`
         }
-        return `共${PERF_MAX}页,${20 * PERF_MAX}条数据,赋值平均耗时:${stat.before},渲染平均耗时:${stat.end},点击任意点赞按钮,开始按钮点击测试!`
+        return `共${PERF_MAX}页,${20 * PERF_MAX}条数据,diff平均耗时:${stat.diff},赋值平均耗时:${stat.before},渲染平均耗时:${stat.end},点击任意点赞按钮,开始按钮点击测试!`
     }, function () {
         return function (args) {
             console.log('当前第' + (this.$perf.count + 1) + '页,共' + this.$perf.max + '页')
