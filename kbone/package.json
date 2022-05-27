@@ -54,7 +54,7 @@
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.5.0",
     "mp-webpack-plugin": "latest",
-    "node-notifier": "^5.1.2",
+    "node-notifier": "^8.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "portfinder": "^1.0.25",
     "postcss-loader": "^2.0.8",
