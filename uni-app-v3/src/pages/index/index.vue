@@ -11,12 +11,6 @@
 </template>
 
 <script>
-    import {
-        reactive,
-        onLoad,
-        onPullDownRefresh,
-        onReachBottom
-    } from 'vue'
 
     import card from "components/card";
     import Api from "utils/api.js";

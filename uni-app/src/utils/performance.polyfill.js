@@ -10,7 +10,10 @@ const _entries = []
 const _marksIndex = {}
 
 function _filterEntries (key, value, filterEntries) {
-  filterEntries = filterEntries || _entries
+  // filterEntries = filterEntries || _entries
+  if(!filterEntries || filterEntries.length === 0){
+    filterEntries = _entries
+  }
   let i = 0
   const n = filterEntries.length
   const result = []

@@ -3,7 +3,7 @@
     <view class="uni-list">
       <view class="uni-list-cell" v-for="(value,key) in listData" :key="key">
         <view style="flex:1">
-          <card :item="value"></card>
+          <card :item="value" @trigger="trigger($event,value)"></card>
         </view>
       </view>
     </view>
@@ -13,7 +13,7 @@
 <script>
 import card from "components/card";
 import Api from "utils/api.js";
-
+import {PERF_MAX_COUNT} from '@/utils/config.js'
 export default {
   data() {
     return {
@@ -26,7 +26,11 @@ export default {
   onLoad() {
     setTimeout(() => {
       this.$mp.page.$perf && this.$mp.page.$perf.mark("setData");
-      this.listData = Api.getNews();
+      console.log('PERF_MAX_COUNT',PERF_MAX_COUNT);
+      for(let i=0;i<PERF_MAX_COUNT;i++){
+         this.listData.push(...Api.getNews());
+      }
+      // this.listData = Api.getNews();
     }, 1000);
   },
   onPullDownRefresh() {
@@ -41,6 +45,11 @@ export default {
   onReachBottom() {
     this.$mp.page.$perf && this.$mp.page.$perf.mark("setData");
     this.listData.push(...Api.getNews());
+  },
+  methods: {
+    trigger(e,val){
+      val.active = e
+    }
   }
 };
 </script>

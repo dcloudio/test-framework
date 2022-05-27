@@ -1,4 +1,5 @@
 {
+	"debug":false,
 	"name": "uni-app",
 	"appid": "",
 	"description": "",
@@ -68,7 +69,7 @@
 		}
 	},
 	"mp-weixin": { /* 微信小程序特有相关 */
-		"appid": "",
+		"appid": "wx9dcdaed5b2bc94ad",
 		"setting": {
 			"urlCheck": false
 		},

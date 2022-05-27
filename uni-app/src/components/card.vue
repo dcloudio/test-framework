@@ -45,14 +45,21 @@
                 isActive: false
             }
         },
+         watch:{
+            'item.active'(newVal){
+                this.isActive = newVal
+            }
+        },
         created(){
             // console.log('组件载入...')
+            this.isActive = this.item.active
         },
         methods: {
             trigger() {
                 this.$scope && this.$scope.$perf && this.$scope.$perf.mark('setData')
                 //  this.$vm &&this.$vm.$mp &&  this.$vm.$mp.component && this.$vm.$mp.component.$perf && this.$vm.$mp.component.$perf.mark('setData')
-                this.isActive = !this.isActive
+                // this.isActive = !this.isActive
+                this.$emit('trigger',!this.isActive)
             }
         }
     }

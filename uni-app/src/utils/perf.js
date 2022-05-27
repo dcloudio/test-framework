@@ -148,7 +148,6 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
                     showCancel: false,
                     success(res) {}
                 })
-                console.log(content)
                 if (PERF_USING_COMPONENTS === false && namespace === 'page') {
                     initComponentPerf.call(this, oldSetData)
                 }
@@ -159,7 +158,7 @@ function wrapperSetData(namespace, shouldMeasureFn, contentFn, getAutoFn, oldSet
                 clearTimeout(this.$perf.timer)
                 this.$perf.timer = setTimeout(() => {
                     autoFn.call(this, this.$perf.autoArgs)
-                }, 1000)
+                }, 300)
             }
             callback && callback()
         })
